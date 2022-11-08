@@ -25,7 +25,15 @@ public class PlayerCheck : MonoBehaviour
 
     private void DownRayCheck()
     {
-
+        RaycastHit2D Downhit = Physics2D.BoxCast(_bxCol.bounds.center, _bxCol.bounds.size, 0, Vector2.down, _rayDistance, _checkLayer);
+        if (Downhit.collider)
+        {
+            _downCheck = true;
+        }
+        else
+        {
+            _downCheck = false;
+        }
     }
 
 }
