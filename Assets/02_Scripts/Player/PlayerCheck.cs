@@ -12,12 +12,11 @@ public class PlayerCheck : MonoBehaviour
     public LayerMask _checkLayer;
 
     private BoxCollider2D _bxCol;
-    private PlayerMove _playerMove;
+    
 
     private void Awake()
     {
         _bxCol = GetComponent<BoxCollider2D>();
-        _playerMove = GetComponent<PlayerMove>();
     }
 
     private void Update()

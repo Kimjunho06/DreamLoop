@@ -10,6 +10,7 @@ public class PlayerMove : MonoBehaviour
 
     public bool _isGround = false;
     public bool _isRunning = false;
+    public bool _isJumping = false;
 
     private Rigidbody2D _rigid;
     private PlayerCheck _playerCheck;
@@ -42,6 +43,9 @@ public class PlayerMove : MonoBehaviour
         {
             _isGround = false;
         }
+
+        //Animation
+        _playerAnimator.SetBool("Ground", _isGround);
     }
 
     private void Jump()
@@ -62,6 +66,18 @@ public class PlayerMove : MonoBehaviour
         {
             CheckJumpValue = _rigid.velocity.y;
         }
+
+        
+        if (CheckJumpValue > 0)
+        {
+        _isJumping = true;
+        }
+        else if (CheckJumpValue <= 0)
+        {
+        _isJumping = false;
+        }
+        
+        _playerAnimator.SetBool("Jump", _isJumping);
         print(CheckJumpValue);
 
     }
