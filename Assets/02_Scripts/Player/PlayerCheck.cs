@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCheck : MonoBehaviour
 {
+
     [Header("Checking")]
     public bool _downCheck = false;
 
@@ -12,6 +13,11 @@ public class PlayerCheck : MonoBehaviour
     public LayerMask _checkLayer;
 
     private BoxCollider2D _bxCol;
+    public BoxCollider2D _BxCol
+    {
+        get { return _bxCol; }
+        set { _bxCol = value; }
+    }
     
 
     private void Awake()

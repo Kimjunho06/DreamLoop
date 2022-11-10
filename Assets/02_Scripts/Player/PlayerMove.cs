@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
     public bool _isGround = false;
     public bool _isRunning = false;
     public bool _isJumping = false;
+    public bool _isDucking = false;
 
     private Rigidbody2D _rigid;
     private PlayerCheck _playerCheck;
@@ -29,6 +30,7 @@ public class PlayerMove : MonoBehaviour
         Move();
         Jump();
         StateReset();
+        Ducking();
     }
 
 
@@ -102,7 +104,32 @@ public class PlayerMove : MonoBehaviour
         {
             _isRunning = true;
         }
+
+        //_isRunning = !(h == 0);
         
         _playerAnimator.SetBool("Run", _isRunning);
     }
+
+    private void Ducking()
+    {
+        if (_isGround)
+        {
+            _isDucking = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
+        }
+        
+        if (_isDucking)
+        {
+            _playerCheck._BxCol.size = Vector2.one;   
+            _playerCheck._BxCol.offset = new Vector2(0, -0.5f);
+        }
+        else
+        {
+            _playerCheck._BxCol.offset = new Vector2(-0.06001854f, -0.1288932f);
+            _playerCheck._BxCol.size = new Vector2(1.238384f, 1.742214f);
+        }
+
+        //Animation
+        _playerAnimator.SetBool("Duck", _isDucking);
+    }
+
 }
