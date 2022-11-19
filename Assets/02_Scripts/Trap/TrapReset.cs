@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -18,13 +19,25 @@ public class TrapReset : MonoBehaviour
 
     private void ResetTrap()
     {
-        for (int i = 0; i < _bxTrapList.Count; i++)
-        {
-            _bxTrapList[i].OneCheck = false;
-            _bxTrapList[i].transform.position = _bxTrapList[i]._originPos;
-            _bxTrapList[i].gameObject.SetActive(true);
-        }
+        BoxTrapReset();
+    }
 
+    private void BoxTrapReset()
+    {
+        try
+        {
+            for (int i = 0; i < _bxTrapList.Count; i++)
+            {
+                _bxTrapList[i].OneCheck = false;
+                _bxTrapList[i].transform.position = _bxTrapList[i]._originPos;
+                _bxTrapList[i].gameObject.SetActive(true);
+            }
+        }
+        catch (Exception ex)
+        {
+            print(ex.Message);
+            return;
+        }
     }
 
     IEnumerator ResetTraps() 
