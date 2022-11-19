@@ -6,12 +6,14 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public float _jumpPower = 5f;
-    public float _playerSpeed = 3f;
+    public float _playerMaxSpeed = 3f;
 
     public bool _isGround = false;
     public bool _isRunning = false;
     public bool _isJumping = false;
     public bool _isDucking = false;
+    
+    private float _playerCurrentSpeed = 0f;
 
     private Rigidbody2D _rigid;
     private PlayerCheck _playerCheck;
@@ -23,6 +25,11 @@ public class PlayerMove : MonoBehaviour
         _rigid = GetComponent<Rigidbody2D>();
         _playerCheck = GetComponent<PlayerCheck>();
         _playerAnimator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        _playerCurrentSpeed = _playerMaxSpeed;   
     }
 
     private void Update()
@@ -80,14 +87,14 @@ public class PlayerMove : MonoBehaviour
         }
         
         _playerAnimator.SetBool("Jump", _isJumping);
-        print(CheckJumpValue);
+        
 
     }
 
     private void Move()
     {
         float h = Input.GetAxis("Horizontal");
-        transform.position += new Vector3(h, 0) * Time.deltaTime * _playerSpeed;
+        transform.position += new Vector3(h, 0) * Time.deltaTime * _playerCurrentSpeed;
         //Flip
         if (h > 0)
             transform.localScale = Vector3.one;
@@ -121,11 +128,13 @@ public class PlayerMove : MonoBehaviour
         {
             _playerCheck._BxCol.size = Vector2.one;   
             _playerCheck._BxCol.offset = new Vector2(0, -0.5f);
+            _playerCurrentSpeed = 0;
         }
         else
         {
             _playerCheck._BxCol.offset = new Vector2(-0.06001854f, -0.1288932f);
             _playerCheck._BxCol.size = new Vector2(1.238384f, 1.742214f);
+            _playerCurrentSpeed = _playerMaxSpeed;
         }
 
         //Animation
