@@ -55,6 +55,11 @@ public class PlayerCheck : MonoBehaviour
         }
     }
 
+    private void DropCheck()
+    {
+        if (transform.position.y < 20)
+    }
+
     public void Die()
     {
         Sequence seq = DOTween.Sequence();

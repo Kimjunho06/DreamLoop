@@ -5,6 +5,7 @@ using System.Xml;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 public class BoxTrap : MonoBehaviour
 {
@@ -13,10 +14,12 @@ public class BoxTrap : MonoBehaviour
     private bool OneCheck = false;
 
     private BoxCollider2D bxCol;
+    private PlayerCheck _playerCheck;
 
     private void Awake()
     {
         bxCol = GetComponent<BoxCollider2D>();
+        _playerCheck = FindObjectOfType<PlayerCheck>();
     }
 
     private void Update()
@@ -61,7 +64,14 @@ public class BoxTrap : MonoBehaviour
             gameObject.transform.DOMove(new Vector3(transform.position.x - 5, transform.position.y), 2f);
             OneCheck = true;
         }
-        print(OneCheck);
+        
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && _boxTrapRunType == 1) //case 1
+        {
+            _playerCheck.Die();
+        }
     }
 }
