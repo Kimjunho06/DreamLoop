@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class PlayerCheck : MonoBehaviour
 {
 
     [Header("Checking")]
     public bool _downCheck = false;
-
+    public bool _dieCheck = false;
 
     [Header("Value Control")]
     public float _rayDistance = 1f;
@@ -30,6 +31,11 @@ public class PlayerCheck : MonoBehaviour
     private void Awake()
     {
         _bxCol = GetComponent<BoxCollider2D>();
+    }
+
+    private void Start()
+    {
+        _fadeImage.DOFade(0, 2f);
     }
 
     private void Update()
@@ -68,12 +74,13 @@ public class PlayerCheck : MonoBehaviour
     {
         Sequence seq = DOTween.Sequence();
 
-        seq.Append(_fadeImage.DOFade(1, 2f));
+        seq.Append(_fadeImage.DOFade(1, 1f));
         seq.AppendCallback(SaveMove);
-        seq.Append(_fadeImage.DOFade(0, 2f));
+        seq.Append(_fadeImage.DOFade(0, 1f));
+        StartCoroutine("DieCheck");
     }
 
-    void SaveMove() => transform.position = _savePointObject.transform.position;
+    void SaveMove() => transform.position = new Vector2(_savePointObject.transform.position.x, _savePointObject.transform.position.y + 2);
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -82,6 +89,13 @@ public class PlayerCheck : MonoBehaviour
         {
             _savePointObject = collision.gameObject;
         }
+    }
+
+    IEnumerator DieCheck()
+    {
+        _dieCheck = true;
+        yield return new WaitForSecondsRealtime(1f);
+        _dieCheck = false;
     }
 
 }

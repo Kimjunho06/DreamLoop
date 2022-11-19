@@ -6,15 +6,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using Unity.VisualScripting;
+using System.Net.NetworkInformation;
 
 public class BoxTrap : MonoBehaviour
 {
     public int _boxTrapRunType;
     
-    private bool OneCheck = false;
+    public bool OneCheck = false;
+    public Vector2 _originPos;
 
     private BoxCollider2D bxCol;
     private PlayerCheck _playerCheck;
+
 
     private void Awake()
     {
@@ -22,14 +25,26 @@ public class BoxTrap : MonoBehaviour
         _playerCheck = FindObjectOfType<PlayerCheck>();
     }
 
+    private void Start()
+    {
+        _originPos = transform.position;
+    }
+
     private void Update()
     {
-        switch (_boxTrapRunType)
+        try
         {
-            case 0:
-                HideBoxTrap(); break;
-            case 1:
-                DashingBoxTrap(); break;
+            switch (_boxTrapRunType)
+            {
+                case 0:
+                    HideBoxTrap(); break;
+                case 1:
+                    DashingBoxTrap(); break;
+            }
+        }
+        catch (Exception ex)
+        {
+            return;
         }
 
         //Test Code
@@ -57,11 +72,12 @@ public class BoxTrap : MonoBehaviour
 
     private void DashingBoxTrap() // Case 1
     {
-
         RaycastHit2D leftRay = Physics2D.Raycast(transform.position, Vector2.left, 4, LayerMask.GetMask("Player"));
         if (leftRay.collider && OneCheck == false)
         {
             gameObject.transform.DOMove(new Vector3(transform.position.x - 5, transform.position.y), 2f);
+            bxCol.offset = new Vector2(-0.9613895f, 0.02913332f);
+            bxCol.size = new Vector2(0.07722092f, 1.841849f);
             OneCheck = true;
         }
         
@@ -74,4 +90,6 @@ public class BoxTrap : MonoBehaviour
             _playerCheck.Die();
         }
     }
+
+    
 }
