@@ -35,6 +35,7 @@ public class PlayerCheck : MonoBehaviour
     private void Update()
     {
         DownRayCheck();
+        DropCheck();
 
         if (Input.GetKeyDown(KeyCode.T))
         {
@@ -57,7 +58,10 @@ public class PlayerCheck : MonoBehaviour
 
     private void DropCheck()
     {
-        if (transform.position.y < 20)
+        if (transform.position.y < -20)
+        {
+            Die();
+        }
     }
 
     public void Die()

@@ -1259,7 +1259,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -604141716841667259, guid: d60cfd8be5f8cfc4c9410d6305fd7a63, type: 3}
       propertyPath: _boxTrapRunType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11853914399196469, guid: d60cfd8be5f8cfc4c9410d6305fd7a63, type: 3}
       propertyPath: m_Name
