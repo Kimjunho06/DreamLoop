@@ -8,6 +8,7 @@ public class TrapReset : MonoBehaviour
 {
     public PlayerCheck _playerCheck;
     public List<BoxTrap> _bxTrapList;
+    public List<SpikeTrap> _SpkTrapList;
 
     private void Update()
     {
@@ -20,6 +21,7 @@ public class TrapReset : MonoBehaviour
     private void ResetTrap()
     {
         BoxTrapReset();
+        SpikeTrapReset();
     }
 
     private void BoxTrapReset()
@@ -37,6 +39,14 @@ public class TrapReset : MonoBehaviour
         {
             print(ex.Message);
             return;
+        }
+    }
+
+    private void SpikeTrapReset()
+    {
+        for (int i = 0; i < _SpkTrapList.Count; i++)
+        {
+            _SpkTrapList[i].SpikeOff();
         }
     }
 
