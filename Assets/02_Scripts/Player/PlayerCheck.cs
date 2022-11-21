@@ -12,10 +12,12 @@ public class PlayerCheck : MonoBehaviour
     public LayerMask _checkLayer;
 
     private BoxCollider2D _bxCol;
+    private PlayerMove _playerMove;
 
     private void Awake()
     {
         _bxCol = GetComponent<BoxCollider2D>();
+        _playerMove = GetComponent<PlayerMove>();
     }
 
     private void Update()
@@ -25,7 +27,7 @@ public class PlayerCheck : MonoBehaviour
 
     private void DownRayCheck()
     {
-        RaycastHit2D Downhit = Physics2D.BoxCast(_bxCol.bounds.center, _bxCol.bounds.size, 0, Vector2.down, _rayDistance, _checkLayer);
+        RaycastHit2D Downhit = Physics2D.BoxCast(_bxCol.bounds.center, new Vector2(0.5f, 3), 0, Vector2.down, _rayDistance, _checkLayer);
         if (Downhit.collider)
         {
             _downCheck = true;
