@@ -11,6 +11,7 @@ public class BoxTrap : MonoBehaviour
     
     [Header("Case 0 : HideBox")]
     public float _boxHideDistance;
+    public Vector2 _boxHideSize;
 
     [Header("Case 1 : DashBox")]
     public int _boxDashSpeed;
@@ -63,7 +64,7 @@ public class BoxTrap : MonoBehaviour
 
     private void HideBoxTrap() // Case 0
     {
-        RaycastHit2D upBoxRay = Physics2D.BoxCast(transform.position, new Vector2(1, 2), 0, Vector2.up, _boxHideDistance, LayerMask.GetMask("Player"));
+        RaycastHit2D upBoxRay = Physics2D.BoxCast(transform.position, _boxHideSize, 0, Vector2.up, _boxHideDistance, LayerMask.GetMask("Player"));
         try
         {
             if (upBoxRay.collider)
@@ -111,7 +112,7 @@ public class BoxTrap : MonoBehaviour
     {
         gameObject.transform.DOMove(new Vector3(transform.position.x - _boxDashSpeed, transform.position.y), 1f);
         bxCol.offset = new Vector2(-0.9613895f, 0.02913332f);
-        bxCol.size = new Vector2(0.07722092f, 1.841849f);
+        bxCol.size = new Vector2(0.07722092f, 1.48518f);
         OneCheck = true;
         yield return new WaitForSeconds(1f);
         if (_isBackDash)
@@ -123,8 +124,8 @@ public class BoxTrap : MonoBehaviour
     IEnumerator RightDash()
     {
         gameObject.transform.DOMove(new Vector3(transform.position.x + _boxDashSpeed, transform.position.y), 1f);
-        bxCol.offset = new Vector2(0.958489f, -0.04078674f);
-        bxCol.size = new Vector2(0.051983f, 1.841849f);
+        bxCol.offset = new Vector2(0.958489f, 0.02913332f);
+        bxCol.size = new Vector2(0.07722092f, 1.48518f);
         BackDash = false;
         yield return new WaitForSecondsRealtime(3f);   
     }

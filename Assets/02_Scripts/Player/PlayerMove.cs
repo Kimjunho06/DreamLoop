@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public float _jumpPower = 5f;
+    public float _jumpPowerPlus = 0.1f;
     public float _playerMaxSpeed = 3f;
 
     public bool _isGround = false;
@@ -29,15 +30,17 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
-        _playerCurrentSpeed = _playerMaxSpeed;   
+        _playerCurrentSpeed = _playerMaxSpeed;
     }
 
     private void Update()
     {
+        _jumpPowerPlus = Mathf.Clamp(_jumpPowerPlus, 0.5f, 1.15f);
         Move();
         Jump();
         StateReset();
         Ducking();
+
     }
 
 
@@ -59,9 +62,24 @@ public class PlayerMove : MonoBehaviour
 
     private void Jump()
     {
-        if (_isGround && Input.GetKeyDown(KeyCode.Space)) // CanJump
+        /*if (_isGround && Input.GetKeyDown(KeyCode.Space)) // CanJump
         {
             _rigid.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
+        }
+
+        if (_isGround && Input.GetKeyUp(KeyCode.Space))
+        {
+            _rigid.velocity = new Vector2(_rigid.velocity.x, _rigid.velocity.y /2);
+        }*/
+
+        if (_isGround && Input.GetKey(KeyCode.Space))
+        {
+            _jumpPowerPlus += Time.deltaTime;
+        }
+        if (_isGround && Input.GetKeyUp(KeyCode.Space))
+        {
+            _rigid.AddForce(Vector2.up * _jumpPower * _jumpPowerPlus, ForceMode2D.Impulse);
+            _jumpPowerPlus = 0.1f;
         }
 
         //Animation
@@ -79,11 +97,11 @@ public class PlayerMove : MonoBehaviour
         
         if (CheckJumpValue > 0)
         {
-        _isJumping = true;
+            _isJumping = true;
         }
         else if (CheckJumpValue <= 0)
         {
-        _isJumping = false;
+            _isJumping = false;
         }
         
         _playerAnimator.SetBool("Jump", _isJumping);
