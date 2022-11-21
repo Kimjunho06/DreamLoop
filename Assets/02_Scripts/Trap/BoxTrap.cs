@@ -10,11 +10,11 @@ public class BoxTrap : MonoBehaviour
     public int _boxTrapRunType;
     
     [Header("Case 0 : HideBox")]
-    public int _boxHideDistance;
+    public float _boxHideDistance;
 
     [Header("Case 1 : DashBox")]
     public int _boxDashSpeed;
-    public int _boxDashDistance;
+    public float _boxDashDistance;
     public bool _isBackDash;
 
     [Header("Just Check")]
