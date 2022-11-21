@@ -366,6 +366,8 @@ MonoBehaviour:
   _bxTrapList:
   - {fileID: 1182227920}
   - {fileID: 374015999}
+  _SpkTrapList:
+  - {fileID: 0}
 --- !u!1 &203721029
 GameObject:
   m_ObjectHideFlags: 0

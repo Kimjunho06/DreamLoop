@@ -51,6 +51,7 @@ public class BoxTrap : MonoBehaviour
         }
         catch (Exception ex)
         {
+            print(ex.Message);
             return;
         }
 

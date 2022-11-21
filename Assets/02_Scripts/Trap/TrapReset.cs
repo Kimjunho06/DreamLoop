@@ -46,13 +46,13 @@ public class TrapReset : MonoBehaviour
     {
         for (int i = 0; i < _SpkTrapList.Count; i++)
         {
-            _SpkTrapList[i].SpikeOff();
+            _SpkTrapList[i].SpikeReset();
         }
     }
 
     IEnumerator ResetTraps() 
     {
-        yield return new WaitForSecondsRealtime(1.2f);
+        yield return new WaitForSecondsRealtime(1f);
         ResetTrap();
         yield return new WaitForSecondsRealtime(0.1f);
 
