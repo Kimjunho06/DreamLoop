@@ -113,7 +113,7 @@ public class BoxTrap : MonoBehaviour
         bxCol.offset = new Vector2(-0.9613895f, 0.02913332f);
         bxCol.size = new Vector2(0.07722092f, 1.841849f);
         OneCheck = true;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         if (_isBackDash)
         {
             BackDash = true;
