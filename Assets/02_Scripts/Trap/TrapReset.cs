@@ -9,6 +9,7 @@ public class TrapReset : MonoBehaviour
     public PlayerCheck _playerCheck;
     public List<BoxTrap> _bxTrapList;
     public List<SpikeTrap> _SpkTrapList;
+    public List<EnemyAI> _EnemyList;
 
     private void Update()
     {
@@ -47,6 +48,14 @@ public class TrapReset : MonoBehaviour
         for (int i = 0; i < _SpkTrapList.Count; i++)
         {
             _SpkTrapList[i].SpikeReset();
+        }
+    }
+
+    private void EnemyReset()
+    {
+        for (int i = 0; i < _EnemyList.Count; i++)
+        {
+            _EnemyList[i].transform.position = _EnemyList[i]._originPos;
         }
     }
 
