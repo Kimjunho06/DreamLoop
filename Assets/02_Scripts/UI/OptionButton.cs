@@ -14,7 +14,6 @@ public class OptionButton : MonoBehaviour
 
     public void OnPanelOpen()
     {
-        Time.timeScale = 0f;
         Sequence seq = DOTween.Sequence();
         _optionOnBtn.gameObject.SetActive(false);
         seq.AppendCallback(PanelOnActive);
@@ -26,7 +25,6 @@ public class OptionButton : MonoBehaviour
 
     public void OnPanelClose()
     {
-        Time.timeScale = 1f;
         Sequence seq = DOTween.Sequence();
         _optionOffBtn.gameObject.SetActive(false);
         seq.Append(_panelBackGround.transform.DOScale(0, 1f).SetEase(Ease.OutBounce));
@@ -42,8 +40,5 @@ public class OptionButton : MonoBehaviour
     private void PanelBackOffActive() => _panelBackGround.gameObject.SetActive(false);
 
     private void OptionOpenBtnOnActive() => _optionOnBtn.gameObject.SetActive(true);
-    private void OptionOpenBtnOffActive() => _optionOnBtn.gameObject.SetActive(false);
     private void OptionCloseBtnOnActive() => _optionOffBtn.gameObject.SetActive(true);
-    private void OptionCloseBtnOffActive() => _optionOffBtn.gameObject.SetActive(false);
-
 }
