@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/01_Scenes/TrapTest.unity
-    guid: 9ea3642b34153fb449792a85a77ad300
+    path: Assets/01_Scenes/2D/Main.unity
+    guid: d70b8db2ad6bff44cb82e7d80fb8281c
   m_configObjects: {}

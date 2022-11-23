@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -13,7 +14,9 @@ public class PlayerMove : MonoBehaviour
     public bool _isRunning = false;
     public bool _isJumping = false;
     public bool _isDucking = false;
-    
+
+    public Image _jumpGage;
+
     private float _playerCurrentSpeed = 0f;
 
     private Rigidbody2D _rigid;
@@ -35,7 +38,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        _jumpPowerPlus = Mathf.Clamp(_jumpPowerPlus, 0.5f, 1.15f);
+        _jumpPowerPlus = Mathf.Clamp(_jumpPowerPlus, 0.5f, 1.1f);
         Move();
         Jump();
         StateReset();
@@ -81,6 +84,7 @@ public class PlayerMove : MonoBehaviour
             _rigid.AddForce(Vector2.up * _jumpPower * _jumpPowerPlus, ForceMode2D.Impulse);
             _jumpPowerPlus = 0.1f;
         }
+        _jumpGage.fillAmount = (_jumpPowerPlus - 0.5f) * 1.6f;
 
         //Animation
         float CheckJumpValue = 0;
