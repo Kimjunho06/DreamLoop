@@ -10,6 +10,7 @@ public class TrapReset : MonoBehaviour
     public List<BoxTrap> _bxTrapList;
     public List<SpikeTrap> _SpkTrapList;
     public List<EnemyAI> _EnemyList;
+    public List<MoveTile> _MoveTileSwitchList;
 
     private void Update()
     {
@@ -23,6 +24,13 @@ public class TrapReset : MonoBehaviour
     {
         BoxTrapReset();
         SpikeTrapReset();
+        EnemyReset();
+        PlayerStateReset();
+        MoveTileReset();
+    }
+
+    private void PlayerStateReset()
+    {
     }
 
     private void BoxTrapReset()
@@ -56,6 +64,15 @@ public class TrapReset : MonoBehaviour
         for (int i = 0; i < _EnemyList.Count; i++)
         {
             _EnemyList[i].transform.position = _EnemyList[i]._originPos;
+        }
+    }
+    
+    private void MoveTileReset()
+    {
+        for (int i = 0; i < _MoveTileSwitchList.Count; i++)
+        {
+            _MoveTileSwitchList[i]._moveTileMap.transform.position = _MoveTileSwitchList[i]._originPos;
+            _MoveTileSwitchList[i]._switchBxcol.enabled = true;
         }
     }
 

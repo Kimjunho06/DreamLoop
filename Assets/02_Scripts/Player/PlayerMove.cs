@@ -57,6 +57,7 @@ public class PlayerMove : MonoBehaviour
         if (!_playerCheck._downCheck) // OnAir
         {
             _isGround = false;
+            _jumpPowerPlus = 0f;
         }
 
         //Animation
