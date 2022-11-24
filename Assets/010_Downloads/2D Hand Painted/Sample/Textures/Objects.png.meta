@@ -783,8 +783,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 464
-        y: 532
-        width: 462
+        y: 534
+        width: 421
         height: 475
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -824,8 +824,8 @@ TextureImporter:
       name: BombOld
       rect:
         serializedVersion: 2
-        x: 839
-        y: 294
+        x: 1192
+        y: 1
         width: 499
         height: 479
       alignment: 7
@@ -1191,6 +1191,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Objects_0
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 555
+        width: 18
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c916841483aaeb44ea39b6143e1f2bd8
+      internalID: -824465791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1220,6 +1241,7 @@ TextureImporter:
       Flame4: 4824839325428195188
       Bucket: 2703656358410550512
       Candle8: -5643596672663569652
+      Objects_0: -824465791
       Candle3: 4609675031244458393
       CutTreeTrunk: 1626533992575499785
       FallenTrunk: -2199377766806250543
