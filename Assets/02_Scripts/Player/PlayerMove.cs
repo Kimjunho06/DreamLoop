@@ -82,8 +82,7 @@ public class PlayerMove : MonoBehaviour
         }
         if (_isGround && Input.GetKeyUp(KeyCode.Space))
         {
-            _rigid.AddForce(Vector2.up * _jumpPower * _jumpPowerPlus, ForceMode2D.Impulse);
-            _jumpPowerPlus = 0.1f;
+            Jumping();
         }
         _jumpGage.fillAmount = (_jumpPowerPlus - 0.5f) * 1.6f;
 
@@ -110,8 +109,12 @@ public class PlayerMove : MonoBehaviour
         }
         
         _playerAnimator.SetBool("Jump", _isJumping);
-        
+    }
 
+    public void Jumping()
+    {
+        _rigid.AddForce(Vector2.up * _jumpPower * _jumpPowerPlus, ForceMode2D.Impulse);
+        _jumpPowerPlus = 0.1f;
     }
 
     private void Move()

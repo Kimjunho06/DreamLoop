@@ -47,32 +47,52 @@ public class TrapReset : MonoBehaviour
         catch (Exception ex)
         {
             print(ex.Message);
-            return;
         }
     }
 
     private void SpikeTrapReset()
     {
-        for (int i = 0; i < _SpkTrapList.Count; i++)
+        try
         {
-            _SpkTrapList[i].SpikeReset();
+            for (int i = 0; i < _SpkTrapList.Count; i++)
+            {
+                _SpkTrapList[i].SpikeReset();
+            }
+        }
+        catch (Exception ex)
+        {
+            print(ex.Message);
         }
     }
 
     private void EnemyReset()
     {
-        for (int i = 0; i < _EnemyList.Count; i++)
+        try
         {
-            _EnemyList[i].transform.position = _EnemyList[i]._originPos;
+            for (int i = 0; i < _EnemyList.Count; i++)
+            {
+                _EnemyList[i].transform.position = _EnemyList[i]._originPos;
+            }
+        }
+        catch (Exception ex)
+        {
+            print(ex.Message);
         }
     }
     
     private void MoveTileReset()
     {
-        for (int i = 0; i < _MoveTileSwitchList.Count; i++)
+        try
         {
-            _MoveTileSwitchList[i]._moveTileMap.transform.position = _MoveTileSwitchList[i]._originPos;
-            _MoveTileSwitchList[i]._switchBxcol.enabled = true;
+            for (int i = 0; i < _MoveTileSwitchList.Count; i++)
+            {
+                _MoveTileSwitchList[i]._moveTileMap.transform.position = _MoveTileSwitchList[i]._originPos;
+                _MoveTileSwitchList[i]._switchBxcol.enabled = true;
+            }
+        }
+        catch (Exception ex)
+        {
+            print(ex.Message);
         }
     }
 

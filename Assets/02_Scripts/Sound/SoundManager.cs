@@ -38,5 +38,7 @@ public class SoundManager : MonoBehaviour
         }
         
         PlayerPrefs.SetFloat("InteracSoundSave", _interacSoundScroll.value);
+
+        
     }
 }
