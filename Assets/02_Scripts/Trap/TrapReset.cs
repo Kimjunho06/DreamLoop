@@ -48,7 +48,7 @@ public class TrapReset : MonoBehaviour
         }
         catch (Exception ex)
         {
-            print(ex.Message);
+            print(ex.Message + "¹º°¡ Àß¸øµÊ");
         }
     }
 
@@ -63,7 +63,7 @@ public class TrapReset : MonoBehaviour
         }
         catch (Exception ex)
         {
-            print(ex.Message);
+            print(ex.Message + "¹º°¡ Àß¸øµÊ");
         }
     }
 
@@ -78,7 +78,7 @@ public class TrapReset : MonoBehaviour
         }
         catch (Exception ex)
         {
-            print(ex.Message);
+            print(ex.Message + "¹º°¡ Àß¸øµÊ");
         }
     }
     
@@ -94,7 +94,7 @@ public class TrapReset : MonoBehaviour
         }
         catch (Exception ex)
         {
-            print(ex.Message);
+            print(ex.Message + "¹º°¡ Àß¸øµÊ");
         }
     }
 
@@ -112,7 +112,7 @@ public class TrapReset : MonoBehaviour
         }
         catch (Exception ex)
         {
-            print(ex.Message);
+            print(ex.Message + "¹º°¡ Àß¸øµÊ");
         }
     }
 

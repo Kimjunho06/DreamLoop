@@ -30,7 +30,7 @@ public class ButtonManager : MonoBehaviour
 
     public void OnMainScene()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("CJM");
 
     }
 
