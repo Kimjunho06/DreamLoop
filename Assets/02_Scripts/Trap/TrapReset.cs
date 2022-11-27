@@ -11,6 +11,7 @@ public class TrapReset : MonoBehaviour
     public List<SpikeTrap> _SpkTrapList;
     public List<EnemyAI> _EnemyList;
     public List<MoveTile> _MoveTileSwitchList;
+    public List<FlashTile> _FlashTileSwitchList;
 
     private void Update()
     {
@@ -27,6 +28,7 @@ public class TrapReset : MonoBehaviour
         EnemyReset();
         PlayerStateReset();
         MoveTileReset();
+        FlashTileReset();
     }
 
     private void PlayerStateReset()
@@ -88,6 +90,24 @@ public class TrapReset : MonoBehaviour
             {
                 _MoveTileSwitchList[i]._moveTileMap.transform.position = _MoveTileSwitchList[i]._originPos;
                 _MoveTileSwitchList[i]._switchBxcol.enabled = true;
+            }
+        }
+        catch (Exception ex)
+        {
+            print(ex.Message);
+        }
+    }
+
+    private void FlashTileReset()
+    {
+        try
+        {
+            for (int i = 0; i < _FlashTileSwitchList.Count; i++)
+            {
+                _FlashTileSwitchList[i]._isRayOn = false;
+                _FlashTileSwitchList[i]._tileBxcol.isTrigger = false;
+                _FlashTileSwitchList[i]._tileSpriteRender.sprite = _FlashTileSwitchList[i]._defaultSprite;
+                _FlashTileSwitchList[i]._flashTile.gameObject.SetActive(false);
             }
         }
         catch (Exception ex)
