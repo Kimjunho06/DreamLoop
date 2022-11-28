@@ -74,8 +74,10 @@ public class PlayerCheck : MonoBehaviour
     {
         Sequence seq = DOTween.Sequence();
 
-        seq.Append(_fadeImage.DOFade(1, 0.8f));
+        seq.Append(_fadeImage.DOFade(1, 0.5f));
+        seq.AppendInterval(0.2f);
         seq.AppendCallback(SaveMove);
+        seq.AppendInterval(1f);
         seq.Append(_fadeImage.DOFade(0, 1f));
         StartCoroutine("DieCheck");
     }

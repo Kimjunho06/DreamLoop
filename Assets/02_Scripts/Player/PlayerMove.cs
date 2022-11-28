@@ -17,6 +17,8 @@ public class PlayerMove : MonoBehaviour
 
     public Image _jumpGage;
 
+    public AudioSource _jumpSound;
+
     private float _playerCurrentSpeed = 0f;
 
     private Rigidbody2D _rigid;
@@ -115,6 +117,7 @@ public class PlayerMove : MonoBehaviour
     {
         _rigid.AddForce(Vector2.up * _jumpPower * _jumpPowerPlus, ForceMode2D.Impulse);
         _jumpPowerPlus = 0.1f;
+        _jumpSound.Play();
     }
 
     private void Move()

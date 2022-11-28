@@ -12,7 +12,7 @@ public class EnemyJump : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player") && Input.GetKeyUp(KeyCode.Space))
         {
-            _rigid.AddForce(Vector2.up * 8 * _pmove._jumpPowerPlus, ForceMode2D.Impulse);
+            _rigid.AddForce(Vector2.up * 6 * _pmove._jumpPowerPlus, ForceMode2D.Impulse);
             print("d");
         }
     }

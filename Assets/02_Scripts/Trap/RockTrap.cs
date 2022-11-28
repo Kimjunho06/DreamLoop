@@ -7,10 +7,16 @@ public class RockTrap : MonoBehaviour
 {
     public float _rockDistance = 2f;
     public float _rockDelay = 0.3f;
+    public Vector2 _originPos;
 
     private void Update()
     {
         RockTrapOn();
+    }
+
+    private void Start()
+    {
+        _originPos = transform.position;    
     }
 
     private void RockTrapOn()

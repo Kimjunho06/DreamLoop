@@ -12,6 +12,10 @@ public class OptionButton : MonoBehaviour
     public Button _optionOnBtn;
     public Button _optionOffBtn;
 
+    public AudioSource _clickSound;
+
+    public void OnClickSound() => _clickSound.Play();
+    
 
     public void OnExit()
     {

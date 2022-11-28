@@ -9,6 +9,7 @@ public class TrapReset : MonoBehaviour
     public PlayerCheck _playerCheck;
     public List<BoxTrap> _bxTrapList;
     public List<SpikeTrap> _SpkTrapList;
+    public List<RockTrap> _rockTrapList;
     public List<EnemyAI> _EnemyList;
     public List<MoveTile> _MoveTileSwitchList;
     public List<FlashTile> _FlashTileSwitchList;
@@ -26,14 +27,26 @@ public class TrapReset : MonoBehaviour
         BoxTrapReset();
         SpikeTrapReset();
         EnemyReset();
-        PlayerStateReset();
         MoveTileReset();
         FlashTileReset();
+        RockTrapReset();
     }
 
-    private void PlayerStateReset()
+    private void RockTrapReset()
     {
+        try
+        {
+            for (int i = 0; i < _rockTrapList.Count; i++)
+            {
+                _rockTrapList[i].transform.position = _rockTrapList[i]._originPos;
+            }
+        }
+        catch (Exception ex)
+        {
+            print(ex.Message + "¹º°¡ Àß¸øµÊ");
+        }
     }
+   
 
     private void BoxTrapReset()
     {
